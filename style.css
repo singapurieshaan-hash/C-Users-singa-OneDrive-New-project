@@ -1,291 +1,160 @@
-:root {
-  --bg: #fdfdfc;
-  --text: #111111;
-  --muted: rgba(0, 0, 0, 0.4);
-  --line: #f2f2f2;
-  --link-line: #d9d9d9;
-  --link-line-hover: #666666;
-  --pink: rgb(255, 0, 170);
-  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  --font-accent: "Newsreader", Georgia, serif;
-}
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100%;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  overflow-y: scroll;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background:
+    radial-gradient(circle at top center, rgba(0, 0, 0, 0.018), transparent 40%),
+    var(--bg);
+  background: var(--bg);
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.page-shell {
-  position: relative;
-  max-width: 36.375rem;
-  margin: 0 auto;
-  padding: 5rem 1rem 2.5rem;
-}
-
-.page-fade {
-  pointer-events: none;
-  position: fixed;
-  inset: 0 0 auto;
-  height: 8rem;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0,
-    rgba(255, 255, 255, 0.74) 19%,
-    rgba(255, 255, 255, 0.54) 34%,
-    rgba(255, 255, 255, 0.38) 47%,
-    rgba(255, 255, 255, 0.28) 56.5%,
-    rgba(255, 255, 255, 0.19) 65%,
-    rgba(255, 255, 255, 0.13) 73%,
-    rgba(255, 255, 255, 0.08) 80.2%,
-    rgba(255, 255, 255, 0.04) 86.1%,
-    rgba(255, 255, 255, 0.02) 91%,
-    rgba(255, 255, 255, 0.01) 95.2%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.homepage > * {
-  animation: rise-in 0.5s ease both;
-}
-
-.homepage > :nth-child(1) {
-  animation-delay: 0s;
 }
 
 .homepage > :nth-child(2) {
   animation-delay: 0.1s;
+  animation-delay: 0.45s;
 }
 
 .homepage > :nth-child(3) {
   animation-delay: 0.2s;
+  animation-delay: 0.55s;
 }
 
 .article {
-  max-width: 70ch;
-}
-
-.article > * + * {
-  margin-top: 1rem;
-}
-
-.article header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.article h1,
-.article header time,
-.article p,
-.post-list h2,
-.post-list a,
-.post-list time,
-.footer p {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  letter-spacing: -0.00563rem;
-}
-
-.article h1 {
-  margin: 0;
-  font-weight: 600;
-}
-
-.article header time,
-.footer p {
-  color: var(--muted);
-  font-weight: 460;
-}
-
 .article p {
   margin: 0;
   font-weight: 460;
+  color: rgba(0, 0, 0, 0.88);
+  color: var(--text);
 }
 
 .article em {
-  font-family: var(--font-accent);
-  font-style: italic;
-}
-
-.basic-link {
-  position: relative;
-}
-
-.basic-link::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.05rem;
-  height: 1px;
-  background: var(--link-line);
-  transition: background-color 0.2s ease;
-}
-
-.basic-link:hover::before {
-  background: var(--link-line-hover);
-}
-
-.post-list {
-  padding-top: 3rem;
-}
-
-.post-list h2 {
-  margin: 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-weight: 460;
-}
-
-.post-list > ul,
-.post-list > ul > li > ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.post-list > ul {
-  display: flex;
   flex-direction: column;
 }
 
+.year-group {
+  display: grid;
+  grid-template-columns: 6.75rem 1fr;
+  align-items: start;
 .post-list > ul > li {
   border-bottom: 1px solid var(--line);
 }
 
+.year-group:last-child {
 .post-list > ul > li:last-child {
   border-bottom: 0;
 }
 
+.year-label {
+  padding: 0.89rem 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.00563rem;
+  font-weight: 460;
+}
+
+.year-group > ul > li:last-child > a::after {
 .post-list > ul > li > ul > li:last-child > a::after {
   display: none;
 }
 
-.post-list a {
-  position: relative;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding: 0.735rem 0;
+  min-height: 3.2rem;
   padding: 0.735rem 0 0.735rem 6.75rem;
 }
 
 .post-list a::after {
   content: "";
   position: absolute;
+  left: 0;
   left: 6.75rem;
   right: 0;
   bottom: 0;
   border-bottom: 1px solid var(--line);
-}
-
-.post-title,
-.post-list time {
-  transition: opacity 0.14s ease;
-}
-
-.post-title {
-  display: inline-flex;
   align-items: center;
   gap: 0.625rem;
   font-weight: 460;
-}
+  color: rgba(0, 0, 0, 0.92);
+  color: var(--text);
+  transform: translateX(0);
+  transition:
+    opacity 0.14s ease,
 
 .new-badge {
   color: var(--pink);
+  font-size: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  padding: 0.05rem 0.42rem 0.08rem;
+  padding: 0.06rem 0.42rem 0.08rem;
+  line-height: 1;
+  transform: rotate(-8deg);
 }
-
-.post-list time {
   color: var(--muted);
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  position: relative;
 }
 
 .post-list time span {
+  display: inline-block;
+  transition: opacity 0.14s ease;
+}
+
+.post-list time span:nth-child(2) {
   position: absolute;
   width: 0;
   height: 0;
   overflow: hidden;
 }
 
+.post-list time span:last-child {
+  visibility: hidden;
+  position: absolute;
+  left: -6.75rem;
+  color: var(--muted);
+}
+
+.post-list > ul > li > ul > li:first-child > a > time > span:last-child {
+  visibility: visible;
+}
+
 @media (min-width: 520px) {
   .post-list > ul:hover .post-title,
   .post-list > ul:hover time {
-    opacity: 0.3;
+  .post-list > ul:hover time span {
+    opacity: 0.34;
   }
 
   .post-list > ul:hover a:hover .post-title,
   .post-list > ul:hover a:hover time {
+  .post-list > ul:hover a:hover time span {
     opacity: 1;
   }
-}
 
-.footer {
-  padding: 2.5rem 0 5rem;
-}
-
-.footer::before {
-  content: "";
-  display: block;
-  width: 3.125rem;
-  height: 1px;
-  margin-bottom: 2.375rem;
-  background: #ededed;
-}
-
-.footer p {
-  margin: 0;
-}
-
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .page-shell {
-    padding: 2rem 1.5rem 2.5rem;
-  }
-
-  .page-fade {
-    height: 2.5rem;
-  }
 }
 
 @media (max-width: 520px) {
+  .year-group {
+    grid-template-columns: 1fr;
   .post-list a {
     padding-left: 3rem;
   }
 
+  .year-label {
+    padding: 0.89rem 0 0.15rem;
   .post-list a::after {
     left: 3rem;
   }
-} 
+
+  .post-list time span:last-child {
+    left: -3rem;
+  }
+}
